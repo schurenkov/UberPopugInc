@@ -1,0 +1,48 @@
+{{> head}}
+
+<div class="container">
+    <div class="row">
+        <!-- Button trigger modal -->
+        <div class="py-5">
+            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Create task
+            </button>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {{#each tasks}}
+        <div class="col">
+            <div class="card border-primary mb-3">
+                <div class="card-body text-primary">
+                    <h5 class="card-title">{{this.description}}</h5>
+                    <p class="card-text">Assignee on: {{this.assignee}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/tasks" method="post">
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> footer}}
