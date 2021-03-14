@@ -14,7 +14,7 @@ export class Task {
     status: 'open' | 'done';
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    assigneeId: User;
+    assigneeId?: User;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Redirect, Render} from '@nestjs/common';
+import {Body, Controller, Get, Post, Put, Redirect, Render} from '@nestjs/common';
 import {TasksService} from "./tasks.service";
 import {CreateTaskDto} from "./dto/create-task.dto";
 
@@ -17,6 +17,12 @@ export class TasksController {
   @Redirect('/tasks')
   async create(@Body() createTaskDto: CreateTaskDto) {
     await this.taskService.create(createTaskDto);
+  }
+
+  @Post('/assign')
+  @Redirect('/tasks')
+  async update() {
+    await this.taskService.update()
   }
 
 }
